@@ -5,10 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSAdv2
+namespace CSAdv2_31
 {
     internal class Program
     {
+
+        class Dummy : IDisposable
+        {
+            public void Dispose()
+            {
+                Console.WriteLine("Dummy 객체의 Dispose() 호출");
+            }
+        }
 
         class Product : IComparable<Product>
         {
@@ -47,6 +55,12 @@ namespace CSAdv2
             {
                 Console.WriteLine(item);
             }
+
+            using (Dummy dummy = new Dummy())
+            {
+                Console.WriteLine("Hello~");
+            }
+
 
         }
     }
